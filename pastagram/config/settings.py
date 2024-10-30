@@ -27,15 +27,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 
 # production
-# SECRET_KEY = os.environ.get("SECRET_KEY")
-# DEBUG = int(os.environ.get("DEBUG", default=0))
-# ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+SECRET_KEY = os.environ.get("SECRET_KEY")
+DEBUG = int(os.environ.get("DEBUG", default=0))
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 # develope
-SECRET_KEY = 'django-insecure-eaud=%nkf8=6iib=*mm^cjmbu9*nr07v6_!g6eh=6igf8!b&k$'
 
-DEBUG = True
-ALLOWED_HOSTS = ['*']
+# DEBUG = True
+# ALLOWED_HOSTS = ['*']
 
 # Application definition
 CSRF_FAILURE_VIEW = 'config.views.csrf_failure_view'
