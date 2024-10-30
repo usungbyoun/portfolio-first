@@ -1,0 +1,212 @@
+
+
+/* 로그인 회원가입 */
+
+@font-face {
+  font-family: 'MapoGoldenPier';
+  src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url('https://cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
+@font-face {
+  font-family: 'Cafe24Oneprettynight';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#login, #signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: rgb(230, 230, 230);
+  }
+  #login > form, #signup > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: fit-content; /* 부모 요소의 최소 너비를 자식의 내용 크기에 맞춤 */
+    min-height: fit-content; 
+    border: 1px solid #ddd;
+    margin-top: -40px;
+    padding: 30px 40px 40px;
+    border-radius: 2px;
+    background-color: white;
+  }
+
+  .form-group {
+    margin-bottom: 1.3rem; /* 각 그룹 간의 여백 */
+    border: 1px solid transparent;  /* 기본 테두리 색상 투명 설정 */
+    border-radius: 4px;            /* 둥근 모서리 */
+    padding: 10px;                 /* 내부 여백 */
+    transition: border-color 0.3s;  /* 테두리 색상 전환 효과 */
+    width: 100%;
+  }
+  
+  .form-label {
+    font-size: 1.2rem;            /* 라벨 텍스트 크기 */
+    font-weight: 400;        
+    color: black;                /* 라벨 색상 */
+    display: block;             /* 블록 요소로 설정하여 여백 적용 */
+    margin-bottom: 0.3rem;         /* 아래 여백 */
+    text-align: left;          /* 왼쪽 정렬 */
+  }
+  
+  .form-control {
+    width: 30rem;                /* 너비 100% */
+    padding: 10px;             /* 패딩 */
+    font-size: 1.4rem;           /* 입력 필드의 폰트 크기 */
+    border: 1px solid #ccc;    /* 기본 테두리 색상 */
+    border-radius: 4px;        /* 둥근 모서리 */
+    transition: border-color 0.3s; /* 테두리 색상 전환 효과 */
+  }
+  /* box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); */
+
+  .form-control:focus {
+    border-color: rgb(53, 194, 86);     /* 입력 필드 포커스 시 테두리 색상 */
+  }
+  
+  /* 마우스 오버 시 상위 요소 테두리 색상 변경 */
+  .form-group:hover {
+    /* border-color: #007bff;     
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); */
+    border-color: rgb(53, 194, 86); /* 마우스 오버 시 테두리 색상을 연한 초록색으로 변경 */
+    box-shadow: 0 0 5px rgba(53, 194, 86, 0.5); /* 연한 초록빛 그림자 추가 */
+  }
+  
+  /* 입력 필드에 포커스가 있을 때 상위 요소 테두리 색상 변경 */
+  .form-control:focus {
+    border-color: transparent; /* 입력 필드 포커스 시 기본 테두리 색상 투명 */
+  }
+  
+  .form-control:focus + .form-label, /* 입력 필드에 포커스가 있을 때 라벨에 스타일 적용 */
+  .form-group:hover .form-label {
+    color: rgb(53, 194, 86); /* 마우스 오버 시 라벨 색상 변경 */
+  }
+
+  #login > form > h1, #signup > form > h1 {
+    margin: 0 0 20px 0;
+    font-weight: 600;
+    font-family: 'MapoGoldenPier';
+    font-size: 3.7rem;
+    letter-spacing: 0.1rem; 
+    user-select: none;
+  }
+
+  #login > form > a, #signup > form > a {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+
+  #login > form > a:hover, #signup > form > a:hover {
+    color: rgb(164, 162, 228); 
+    transform: scale(1.07);  
+  }
+
+  #login > form > p, #signup > form > p {
+    margin: 0;
+  }
+
+  #login > form > p > label, #signup > form > p > label {
+    display: block;
+    position: relative;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 2px;
+    color: #333;
+  }
+
+  #login > form > p > label::after, #signup > form > p > label::after {
+    bottom: 0;
+    color: white;
+    content: ":";
+    position: absolute;
+    transform: translate(-100%, 0);
+  }
+
+  #login > form > p > input, #signup > form > p > input {
+    padding: 11px 0 10px 10px;
+    min-width: 250px;
+    outline: 0;
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+  }
+  #login > form > ul.errorlist, #signup > form > ul.errorlist {
+    color: red;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  #login .btn-login, #login .btn-signup, #signup .btn-login, #signup .btn-signup {
+    width: 100%;
+    border: none;
+    color: white;
+    background-color: #0095f6;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+
+
+  .btn-login:hover, .btn-signup:hover {
+    color: #fff;                         /* 마우스 오버 시 글자색 */
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5); /* 그림자 효과 */
+    transform: scale(1.02);              /* 버튼 크기 약간 증가 */
+  }
+
+  #profile_image {
+    display: none;
+  }
+
+/* 커스텀 파일 선택 버튼 스타일 */
+.custom-file-upload {
+  display: inline-block;
+  color: black;
+  width: 6rem;
+  height: 4.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  background-image: url('/static/image/file_search.png'); /* 이미지 경로 */
+  background-size: contain;
+  background-position: left; 
+  background-repeat: no-repeat; 
+  margin-top: 0.4rem;
+  margin-left: 0.7rem;
+  }
+
+.custom-file-upload:hover {
+  transform: scale(1.08);   
+}
+.print-detail {
+  margin-top: 0.5rem;
+}
+
+.local-file-name {
+  color: green;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.none-image-error {
+  color: red;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.form-group-img {
+  margin-bottom: 0.5rem; /* 각 그룹 간의 여백 */
+  border: 1px solid transparent;  /* 기본 테두리 색상 투명 설정 */
+  border-radius: 4px;            /* 둥근 모서리 */
+  padding: 10px;                 /* 내부 여백 */
+  transition: border-color 0.3s;  /* 테두리 색상 전환 효과 */
+  width: 100%;
+}
+
+  /* ----------------- */

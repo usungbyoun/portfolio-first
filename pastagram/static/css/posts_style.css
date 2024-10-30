@@ -1,0 +1,596 @@
+
+/*
+CSS CONTENTS:
+
+01. base_posts.html
+02. aside.html
+03. posts.html
+04. Category
+*/
+
+
+/* base_posts.html */
+body.posts-body {
+    background-color: rgb(230, 230, 230);
+}
+
+main.aside-display {
+    display: inline-block;
+    width: 100%;
+    /* height: 100%; */
+    /* align-items: center;  */
+    
+    background-color: rgb(230, 230, 230);
+}
+
+main.aside-display article.base-container {
+    float: right;
+    width: 80%; 
+}
+
+article.base-container div.line-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 100vh;
+}
+
+
+/* base_feed.html */
+
+article.base-container div.feed-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10rem;
+}
+
+@media (min-width: 700px) {
+    article.base-container div.feed-container {
+      padding: 0 2.5vw 5vw;
+    }
+}
+@media (max-width: 700px) {
+    article.base-container div.feed-container {
+      margin: -11px -10px 50px -10px;
+    }
+}
+
+
+/* aside.html */
+
+aside.posts-aside {
+    position: fixed; 
+    float: left;
+    width: 20%;
+    height: 100%;
+    padding: 2rem;
+    background-color: white;
+    border-right: 0.1rem solid #FFFFFF;
+    box-shadow: 1rem 1rem 1rem 0 rgb(68 68 68 / 20%);
+}
+  
+aside.posts-aside div.list-box {
+    margin-top: 3rem;
+    margin-left: 2rem;
+}
+
+@font-face {
+    font-family: 'OG_Renaissance_Secret-Rg';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/OG_Renaissance_Secret-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+aside.posts-aside h1.top-title {
+    font-family: 'OG_Renaissance_Secret-Rg', 'serif';
+    font-size: 4.3rem;
+    font-weight: 650;
+    margin-bottom: 5rem;
+}
+
+aside.posts-aside ul li.aside-list {
+    margin-bottom: 3rem;
+}
+
+aside.posts-aside ul img.list-img {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 1.5rem;
+}
+
+aside.posts-aside ul img#asideProfile {
+    border-radius: 2rem;
+}
+aside.posts-aside ul span.list-span {
+    font-size: 2.7rem;
+    font-weight: 400;
+}
+
+
+/* post.html */
+
+article.post {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    margin-bottom: 6rem;
+    background-color: #FFFFFF;
+    border: none;
+    border-radius: 2rem;
+    box-shadow: 1rem 1rem 1rem 0 rgb(68 68 68 / 20%);
+}
+
+@media (min-width: 700px) {
+    article.post {
+      width: 600px;
+    }
+}
+@media (max-width: 700px) {
+    article.post {
+      width: 100%;
+    }
+}
+
+article.post header.post-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 6rem;
+    padding-left: 2rem;
+    border: none;
+    border-radius: 2rem;
+}
+
+article.post .post-user a.user-link {
+    display: flex;
+    align-items: center;
+}
+
+article.post .post-user img.post-user-img {
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 2rem;
+    margin-right: 1rem;
+}
+
+article.post .post-user span.user-name {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+article.post .post-user button.btn-follow {
+    height: 2.2rem;
+    width: 7rem;
+    margin-left: 3rem;
+    color: white;
+    font-family: "paybooc-Light", sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 1.5rem;
+    box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, 0.2);
+    background: linear-gradient(-45deg, #33ccff 0%, #ff99cc 100%);
+}
+  
+article.post .post-user button.btn-follow:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+article.post .splide li.image-list {
+    width: 55rem;
+    height: 53rem;
+}
+
+article.post .splide img.post-image {
+    width: 100%;
+    height: 100%;
+}
+
+article.post div.post-contents-container {
+    padding: 1rem;
+}
+
+div.post-contents-container span.content-view {
+    font-size:1.6rem;
+    font-weight: 400;
+}
+
+div.post-contents-container div.tag-view {
+    padding-top: 2rem;
+}
+
+div.post-contents-container .tag-view a.tag-view {
+    color: #0095f6;
+    font-size:1.5rem;
+    font-weight: 450;
+    margin-right: 0.5rem;
+}
+
+
+article.post div.post-buttons {
+    padding: 1rem 0.7rem;
+}
+
+article.post .post-buttons form {
+    display: inline-block;
+}
+
+article.post .post-buttons button.like-button,
+article.post .post-buttons span.comment-count {
+    font-size: 1.4rem;
+    font-weight: 400;
+    height: 2.5rem;
+    padding: 0.3rem;
+    border: none;
+    background-color: transparent;
+}
+
+article.post .post-buttons button.like-button {
+    cursor: pointer;
+    margin-right: 2rem;
+}
+article.post .post-buttons span.comment-count {
+    cursor: default;
+}
+
+article.post .post-buttons img.like-image {
+    width: 1.8rem;
+    height: 1.7rem;
+    display: inline-block;
+}
+
+
+article.post .comments-container {
+    padding: 1rem;
+    border: none;
+}
+
+article.post .comments-container li.comment-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+article.post .comment-row img.comment-user-img {
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    border-radius: 2rem;
+    margin-right: 0.5rem;
+}
+
+article.post .comment-row span.comment-user {
+    font-weight: 600;
+    font-size: 1.45rem;
+    margin-right: 1.5rem;
+}
+
+article.post .comment-row span.comment-content {
+    font-weight: 450;
+    font-size: 1.35rem;
+    margin-right: 0.5rem;
+}
+
+article.post .comments-container button.btn-delete {
+    height: 2rem;
+    padding: 0 0.8rem;
+    color: #ff797b;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: transparent;
+    border: 0.1rem solid #ff797b;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+article.post .comments-container button.btn-delete:hover {
+    background-color: #ff797b;
+    color: white;
+}
+
+article.post > small {
+    padding: 0 1rem 1rem;
+}
+
+article.post .post-comment-create {
+    position: relative;
+  }
+  
+  article.post .post-comment-create .comment-write {
+    width: 93%;
+    height: 4rem;
+    border: 0.1rem solid #ddd;
+    border-radius: 2rem;
+    margin: 0 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  article.post .post-comment-create button.btn-comment-submit {
+    width: 10%;
+    height: 4rem;
+    margin-right: 3rem;
+    color: #0095f6;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  article.post .post-comment-create button:hover {
+    font-weight: bold;
+  }
+
+
+/* post-add.html */
+
+div.post-add {
+    padding: 1.5rem;
+    border: none;
+    border-radius: 2rem;
+    box-shadow: 1rem 1rem 1rem 0 rgb(68 68 68 / 20%);
+    background-color: white;
+}
+
+div.post-add h2.post-add-title {
+    font-weight:500;
+    font-size: 1.9rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+div.post-add div.image-function {
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+}
+
+
+div.post-add .image-function div.button-list {
+    display: inline-block;
+    text-align: center; 
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+  
+div.post-add .button-list .image-select-btn {
+    width: 19rem;
+    height: 3.3rem;
+    line-height: 3.2rem;
+    margin-right: 4rem;
+    border: none;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    background-color: #77af9c;
+    cursor: pointer;
+}
+
+div.post-add .button-list .image-select-btn:hover {
+    letter-spacing: 0.1rem;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+div.post-add .button-list span.file-select-span {
+    color: #FFFFFF;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+div.post-add .button-list a#searchButton {
+    float: left;
+}
+
+div.post-add .button-list label#fileButton {
+    float: right;
+}
+
+div.post-add .button-list input#img_file_select {
+    display: none;
+}
+
+div.post-add .image-function div.print-detail {
+    margin-left: 2.5rem;
+    margin-top: 0.5rem;
+}
+
+div.post-add .print-detail span.local-file-name {
+    color: blue;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+div.post-add .print-detail p.none-image-error {
+    color: red;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+div.post-add .image-function div.image-view-list {
+    margin: 1rem;
+}
+
+div.post-add .image-view-list img.print-image {
+    display: inline-block;
+    width: 18rem;
+    height: 18rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    border: none;
+    border-radius: 1rem;
+}
+
+div.post-add label.post-content-label {
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    
+}
+
+div.post-add .content-container {
+    margin-top: 2rem;
+}
+
+div.post-add .post-text-content {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgb(220, 216, 216);
+    border-radius: 1rem;
+}
+
+div.post-add div.btn-right {
+    display: flex;
+}
+
+div.post-add button.post-btn {
+    color: #0095f6;
+    background-color: transparent;
+    border: 1px solid #0095f6;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 8px 55px;
+    cursor: pointer;
+    transition-duration: 0.25s;
+    margin-top: 1.5rem;
+    margin-left: auto;
+}
+
+div.post-add button.post-btn:hover {
+    color: white;
+    background-color: #0095f6;
+}    
+
+
+/* search_img.html */
+
+div.search-container {
+    min-width: 60%;
+    height: 20%;
+    display: grid;
+    place-items: center; 
+    border: none;
+    border-radius: 2rem;
+    box-shadow: 1rem 1rem 1rem 0 rgb(68 68 68 / 20%);
+    background-color: white;
+}
+
+div.search-container input.search-name {
+    border: 0.2rem solid rgb(177, 179, 178);
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    width: 30rem;
+    margin-right: 3.5rem;
+}  
+
+div.search-container select.count-select {
+    width: 7rem;
+    height: 2.8rem;
+    border: 0.2rem solid rgb(177, 179, 178);
+    border-radius: 1rem;
+    text-align: center;
+    margin-left: 1rem;
+    margin-right: 2.5rem;
+}
+
+div.search-container label.select-label {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+button.search-btn {
+width: 8rem;
+height: 3.5rem;
+color: #0095f6;
+border: 1px solid #0095f6;
+border-radius: 5px;
+box-sizing: border-box;
+cursor: pointer;
+background-color: transparent;
+transition-duration: 0.25s;
+}
+ button.search-btn:hover {
+    color: white;
+    background-color: #0095f6;
+}    
+#keyword-error{
+    font-size: 1rem;
+    font-weight: 600;
+    color: red;
+    margin: 5px 0px 0px 15px;
+    }
+
+.image-checkbox-label {
+    cursor: pointer;
+    margin: 3px;
+
+}
+#img_view {
+border-radius: 10px;
+
+}
+
+#img_view:hover {
+box-shadow: 2px 2px 3px 3px #ddd;
+}
+
+
+    .url_send {
+      float: right;
+    margin: 0 auto;
+    width: 150px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+      height: 30px;
+    border: 1px solid gray;
+    
+    border-radius: 10px;
+    }
+    
+/* 체크박스 */
+.image-checkbox-label {
+    position: relative;
+    display: inline-block;
+
+}
+.check-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: none;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    border-radius: 30px;
+}
+
+.image-checkbox-label input:checked + .check-icon {
+    display: block;
+}
+.input-checkbox {
+position: absolute;
+left: -9999px;
+}
+
+/* tags */
+div#tags {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: 1rem 1rem 1rem 0 rgb(68 68 68 / 20%);
+  
+  }
+  .tags-header {
+    margin-bottom: 10px;
+    /* background-color: red; */
+  }
+  
+  
+  

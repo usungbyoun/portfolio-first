@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pastagram</title>
+  {% extends 'base.html' %}
+  {% load static %}
+
+  {% block head %}
+    <link rel="stylesheet" href="{% static 'splide/splide.css' %}">
+  {% endblock %}
+</head>
+{% block base_content %}
+<body class="posts-body">
+
+    <main class="aside-display">
+      {% include 'aside.html' %}
+      <article class="base-container">
+        <div class="line-container">
+          {% block content %}{% endblock %}
+        </div>
+      </article>
+    </main>
+
+    <script type="text/javascript" src="{% static 'splide/splide.js' %}"></script>
+    <script type="text/javascript" src="{% static 'splide/splide_set.js' %}"></script>
+
+</body>
+{% endblock %}
+
+</html>
+
+
+</head>
+<body>
