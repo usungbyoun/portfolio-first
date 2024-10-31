@@ -32,12 +32,11 @@ DEBUG = int(os.environ.get("DEBUG", default=0))
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 # develope
-
 # DEBUG = True
 # ALLOWED_HOSTS = ['*']
 
+
 # Application definition
-CSRF_FAILURE_VIEW = 'config.views.csrf_failure_view'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -88,16 +87,19 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'portfolioa_db',
-        'USER': 'usunga',
-        'PASSWORD' : 'usung418',
-        'HOST' : 'localhost',
-        'PORT' :'',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD' : os.environ.get('POSTGRES_PASSWORD'),
+        'HOST' : os.environ.get('POSTGRES_HOST'),
+        'PORT' :os.environ.get('POSTGRES_PORT'),
     },
 }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -137,10 +139,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "staticfiles_first"
 
 MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR.parent / "media"
+MEDIA_ROOT = BASE_DIR.parent / "media_first"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

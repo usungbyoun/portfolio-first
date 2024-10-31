@@ -28,9 +28,3 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(prefix=settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(prefix=settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-if not settings.DEBUG:
-    handler400 = 'common.error.error_views.bad_request_page'
-    handler403 = 'common.error.error_views.permission_denied_page'
-    handler404 = 'common.error.error_views.page_not_found_page'
-    handler500 = 'common.error.error_views.server_error_page'

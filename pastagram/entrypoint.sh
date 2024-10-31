@@ -4,10 +4,9 @@ if [ "$DATABASE" = "postgres" ]
 then
     echo "Waiting for postgres..."
 
-    while ! nc -z $SQL_HOST $SQL_PORT; do
-      sleep 0.1
-    done
-
+    # wait-for-it을 사용하여 db_first의 PostgreSQL이 준비될 때까지 대기
+    /usr/local/bin/wait-for-it db_first:5432 -t 30
+    
     echo "PostgreSQL started"
 fi
 
