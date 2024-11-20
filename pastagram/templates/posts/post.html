@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>feeds</title>
+{% load static %}
+
+</head>
+<body>
+
+    <article id="post-{{ post.id }}" class="post">
+        <header class="post-user">
+            <a href="{% url 'users:profile' user_id=post.user.id %}" class="user-link">
+                {% if post.user.profile_image %}
+                    <img src="{{ post.user.profile_image.url }}" class="post-user-img">
+                {% endif %}
+
+                <span class="user-name">{{ post.user.username }}</span>
+            </a>
+
+            {% if user != post.user %}
+                <form action="{% url 'users:follow' user_id=post.user.id %}?next={{ action_redirect_url }}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-follow">
+                        {% if post.user in user.following.all %}
+                            Unfollow
+                        {% else %}
+                            Follow
+                        {% endif %}
+                    </button>
+                </form>
+            {% endif %}
+        </header>
+
+        <div class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {% for image in post.postimage_set.all %}
+                        {% if image.photo %}
+                            <li class="splide__slide image-list">
+                                <img src="{{ image.photo.url }}" class="post-image">
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="post-contents-container">
+            <span class="content-view">{{ post.content|linebreaksbr }}</span>
+
+            <div class="tag-view">
+                {% for tag in post.tags.all %}
+                    <a href="{% url 'posts:tags' tag_name=tag.name %}" class="tag-view">#{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="post-buttons">
+            <form action="{% url 'posts:post_like' post_id=post.id %}"?next="{{ action_redirect_url }}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="like-button">
+                    {% if user in post.like_users.all %}
+                        <img src="{% static 'image/like_active.png' %}" class="like-image">
+                    {% else %}
+                        <img src="{% static 'image/like_inactive.png' %}" class="like-image">
+                    {% endif %}
+
+                    {{ post.like_users.count }}
+                </button>
+            </form>
+
+            <span class="comment-count">댓글 {{ post.comment_set.count }}</span>
+        </div>
+
+        <div class="comments-container">
+            <ul>
+            {% for comment in post.comment_set.all %}
+                <li class="comment-row">
+                    {% if comment.user.profile_image %}
+                        <img src="{{ comment.user.profile_image.url }}" class="comment-user-img">
+                    {% endif %}
+                    <span class="comment-user">{{ comment.user.username }}</span>
+                    <span class="comment-content">{{ comment.content }}</span>
+
+                    {% if user == comment.user %}
+                        <form method="POST" action="{% url 'posts:comment_delete' comment_id=comment.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-delete">삭제</button>
+                        </form>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+
+
+        <small>{{ post.created }}</small>
+        <div class="post-comment-create">
+            <form method="POST" action="{% url 'posts:comment_add' %}?next={{ action_redirect_url }}">
+                {% csrf_token %}
+                <input type="hidden" name="post" value="{{ post.id }}">
+                {{ comment_form.content }} <!-- "class": "comment-write"-->
+                    <button class="btn-comment-submit" type="submit">게시</button>
+            </form>
+        </div>
+    </article>
+
+
+
+</body>
+</html>

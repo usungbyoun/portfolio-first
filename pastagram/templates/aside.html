@@ -1,0 +1,42 @@
+
+{% load static %}
+
+<aside class="posts-aside">
+    <div class="list-box">
+        <h1 class="top-title">
+            <a href="{% url 'posts:feeds' %}">Pastagram</a>
+        </h1>
+
+        <ul>
+            <li class="aside-list">
+                    <a class="aside-list-a" href="{% url 'posts:post_add' %}">
+                <img src="{% static 'image/add_post.png' %}" class="list-img">
+                        <span class="list-span">게시물 작성</span>
+                    </a>
+            </li>
+
+            <li class="aside-list">
+                <a href="{% url 'users:profile' user_id=user.id %}">
+                    {% if user.profile_image %}
+                        <img src="{{ user.profile_image.url }}" id="asideProfile" class="list-img">
+                    {% endif %}
+                    <span class="list-span">프로필</span>
+                </a>
+            </li>
+            
+            <li class="aside-list">
+                <a href="{% url 'users:logout' %}">
+                <img src="{% static 'image/logout.png' %}" class="list-img">
+                    <span class="list-span">로그아웃</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</aside>
+
+
+
+
+
+

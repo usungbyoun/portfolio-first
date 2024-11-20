@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pastagram</title>
+  {% load static %}
+    <link rel="stylesheet" href="{% static 'css/baseStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/users_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts_style.css' %}">
+    
+
+
+  {% block head %}{% endblock %}
+</head>
+<body>
+
+  {% block base_content %}{% endblock %}
+  <script type="text/javascript" src="{% static 'js/style.js' %}"></script>
+
+</body>
+</html>
+

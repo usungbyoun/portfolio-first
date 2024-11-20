@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pastagram</title>
+        {% extends 'base_users.html' %}
+        {% load static %}
+
+</head>
+<body>
+{% block content %}
+<div id="signup">
+    <form method="POST" enctype="multipart/form-data">
+        <h1>Pastagram</h1>
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username" class="form-label">아이디</label>  <!-- 라벨 추가 -->
+            {{ form.username }}  
+        </div>
+
+        <div class="form-group">
+            <label for="username" class="form-label">비밀번호</label>  <!-- 라벨 추가 -->
+            {{ form.password }}  
+        </div>
+
+        <div class="form-group">
+            <label for="username" class="form-label">비밀번호 확인</label>  <!-- 라벨 추가 -->
+            {{ form.password2 }}  
+        </div>
+
+        <div class="form-group-img">
+            <label for="username" class="form-label">프로필 이미지</label>  
+            {{form.profile_image}}
+            <label for="profile_image" class="custom-file-upload"></label>
+   
+            <div class="print-detail">
+                <span class="local-file-name"></span>
+                {% if error_message %}
+                    <p class="none-image-error">{{ error_message }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-signup">가입</button>
+        <a href="{% url 'users:login' %}">로그인 페이지로 이동</a>
+    </form>
+</div>
+
+{% endblock %}
+
+  </div>
+</body>
+</html>

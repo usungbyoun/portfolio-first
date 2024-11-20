@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Pastagram</title>
+</head>
+<body>
+{% extends 'base_posts.html' %}
+
+{% block content %}
+<div class="post-add">
+  <h2 class="post-add-title">게시물 작성</h2>
+    <form method="POST" enctype="multipart/form-data" action="{% url 'posts:post_add' %}">
+        {% csrf_token %}
+        <div class="image-function">
+            <div class="button-list">
+                <a href="{% url 'posts:search_img' %}" id="searchButton" class="image-select-btn">
+                    <span class="file-select-span">포털사이트 이미지 가져오기</span>
+                </a>
+                
+                <label for="img_file_select" id="fileButton" class="image-select-btn">
+                    <input id="img_file_select" name="images" type="file" multiple  onchange="displayFileName(this)">
+                    <span class="file-select-span">로컬 파일 선택</span>
+                </label>
+            </div>
+
+            <div class="print-detail">
+                <span class="local-file-name"></span>
+                {% if error_message %}
+                    <p class="none-image-error">{{ error_message }}</p>
+                {% endif %}
+            </div>
+
+            <div class="image-view-list">
+                {% for selected_image_url in selected_img_urls %}
+                    <img src="{{ selected_image_url }}" class="print-image">
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="content-container">
+            <label class="post-content-label">내용</label>
+            {{ form.content }}
+        </div>
+ 
+
+        
+        <div class="content-container">
+            <label for="id_tags" class="post-content-label">해시태그</label>
+            <input class="post-text-content" name="tags"
+                    type="text" placeholder="쉼표(,)로 구분하여 여러 태그 입력">
+        </div>
+
+        <div class="btn-right">
+            <button type="submit" class="post-btn">게시</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+</body>
+</html>
+

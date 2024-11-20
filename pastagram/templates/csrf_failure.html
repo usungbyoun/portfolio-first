@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRF 오류</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/error.css' %}"> <!-- CSS 파일 연결 -->
+</head>
+<body>
+    <div class="container">
+        <div class="error-message">
+            <h1>CSRF 검증 실패</h1>
+            <p>요청을 처리하는 중 문제가 발생했습니다.</p>
+            <p>다시 시도해 주세요.</p>
+            <a href="{% url 'users:login' %}" class="btn">홈으로 돌아가기</a> <!-- 홈으로 돌아가기 버튼 -->
+        </div>
+    </div>
+</body>
+</html>

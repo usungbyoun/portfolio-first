@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+venv/
+.env.prod
+.env.prod.db
+
+venv/
+temp/
+media/post/*
+media/users/profile/*
+media/users/basicProfile/*
+!media/post/.gitkeep
+!media/users/profile/.gitkeep
+!media/users/basicProfile/.gitkeep
+
+
