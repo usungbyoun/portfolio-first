@@ -84,24 +84,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.environ.get('POSTGRES_DB'),
-#         'USER': os.environ.get('POSTGRES_USER'),
-#         'PASSWORD' : os.environ.get('POSTGRES_PASSWORD'),
-#         'HOST' : os.environ.get('POSTGRES_HOST'),
-#         'PORT' :os.environ.get('POSTGRES_PORT'),
-#     },
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD' : os.environ.get('POSTGRES_PASSWORD'),
+        'HOST' : os.environ.get('POSTGRES_HOST'),
+        'PORT' :os.environ.get('POSTGRES_PORT'),
+    },
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -151,18 +151,53 @@ DEFAULT_FILE_STORAGE = 'config.s3_storage.MediaStorage'
 # S3 버킷 URL 설정
 
 # 정적 파일 URL과 미디어 파일 URL 설정
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 
+if DEBUG:
+    STATIC_URL = 'static/'
+    MEDIA_URL = 'media/'
+else:
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/portfolio-first-bucket/static/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/portfolio-first-bucket/media/'
 
 # STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / "staticfiles_first"
+# STATIC_ROOT = BASE_DIR / "staticfiles_first"
 
-MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR / "media_first"
+# MEDIA_URL = "media/"
+# MEDIA_ROOT = BASE_DIR / "media_first"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'django_debug.log',
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
