@@ -47,9 +47,7 @@ def signup(request):
             user = form.save()
             login(request, user)
 
-            # basicprofile_path = os.path.join(settings.MEDIA_ROOT, 'users/profile/basicProfile/basic.png')
-            # if os.path.isfile(basicprofile_path):
-            #     os.remove(basicprofile_path)
+
             return redirect("/posts/feeds/")
         # POST 요청에서 form이 유효하지 않다면, 아래의 context = ... 부분으로 이동한다.
 

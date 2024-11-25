@@ -27,11 +27,6 @@ class LoginForm(forms.Form):
 
 
 class SignupForm(forms.Form):
-    # username = forms.CharField()
-    # password = forms.CharField(widget=forms.PasswordInput)
-    # password2 = forms.CharField(widget=forms.PasswordInput)
-    # profile_image = forms.ImageField(required=False)
-
     username = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': '사용자명'})
     )

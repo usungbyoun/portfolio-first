@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-load_dotenv(os.path.join(BASE_DIR.parent, ".env.prod"))
+load_dotenv(os.path.join(BASE_DIR, ".env.prod"))
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = int(os.environ.get("DEBUG", default=0))
@@ -102,8 +102,10 @@ DATABASES = {
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+CSRF_TRUSTED_ORIGINS = ['https://first.usungfolio.com']
 
-
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -159,12 +161,8 @@ else:
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/portfolio-first-bucket/static/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/portfolio-first-bucket/media/'
 
-# STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
-# STATIC_ROOT = BASE_DIR / "staticfiles_first"
 
-# MEDIA_URL = "media/"
-# MEDIA_ROOT = BASE_DIR / "media_first"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
