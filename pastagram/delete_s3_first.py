@@ -20,9 +20,10 @@ prefix = 'portfolio-first-bucket/static/'
 for obj in bucket.objects.filter(Prefix=prefix):
     try:
         s3_client.delete_object(Bucket=bucket.name,Key=obj.key)
-        print(f"delete: {obj.key}")
+        
 
     except Exception as e:
         print(f"Error delete {obj.key}: {e}")
 
+print(f"delete: {prefix}/*")
 

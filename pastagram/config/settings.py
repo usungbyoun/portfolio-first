@@ -154,12 +154,9 @@ DEFAULT_FILE_STORAGE = 'config.s3_storage.MediaStorage'
 
 # 정적 파일 URL과 미디어 파일 URL 설정
 
-if DEBUG:
-    STATIC_URL = 'static/'
-    MEDIA_URL = 'media/'
-else:
-    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/portfolio-first-bucket/static/'
-    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/portfolio-first-bucket/media/'
+
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/portfolio-first-bucket/static/'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/portfolio-first-bucket/media/'
 
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
