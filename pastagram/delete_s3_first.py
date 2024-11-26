@@ -21,7 +21,6 @@ for obj in bucket.objects.filter(Prefix=prefix):
     try:
         s3_client.delete_object(Bucket=bucket.name,Key=obj.key)
         
-
     except Exception as e:
         print(f"Error delete {obj.key}: {e}")
 
