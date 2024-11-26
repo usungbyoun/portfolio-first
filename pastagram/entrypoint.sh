@@ -12,8 +12,8 @@ fi
 
 python manage.py flush --no-input
 python manage.py migrate
-python manage.py collectstatic --no-input --clear
 
-python upload_to_s3.py
+python delete_s3_first.py
+python manage.py collectstatic --no-input --clear
 
 exec gunicorn config.wsgi:application --bind 0.0.0.0:8100
